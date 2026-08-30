@@ -120,7 +120,7 @@
             Name = "LoginForm";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System v1.0 – Login (G. K. N.)";
+            Text = "Billing System v1.0 – Login (G.K.N.)";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
