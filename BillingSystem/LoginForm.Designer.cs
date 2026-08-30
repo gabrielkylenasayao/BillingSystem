@@ -98,7 +98,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 6;
-            btnCancel.Text = "Cancel";
+            btnCancel.Text = "Quit";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
@@ -120,7 +120,7 @@
             Name = "LoginForm";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System - Login";
+            Text = "Billing System v1.0 – Login (G. K. N.)";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
