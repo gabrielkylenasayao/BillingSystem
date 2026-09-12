@@ -1,6 +1,4 @@
-﻿using BillingSystem.Database;
-
-namespace BillingSystem
+﻿namespace BillingSystem
 {
     partial class LoginForm
     {
@@ -93,7 +91,6 @@ namespace BillingSystem
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += btnLogin_Click;
             // 
             // btnCancel
             // 
@@ -101,7 +98,7 @@ namespace BillingSystem
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 6;
-            btnCancel.Text = "Quit";
+            btnCancel.Text = "Leave";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
@@ -131,28 +128,13 @@ namespace BillingSystem
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            // Test the database connection when the form opens.
-            // This gives a clear warning if MySQL is not running.
-            if (!DatabaseConnection.TestConnection())
-            {
-                MessageBox.Show(
-                    "Cannot connect to the database.\n\n" +
-                    "Please make sure:\n" +
-                    "  1. MySQL Server is running.\n" +
-                    "  2. BillingDB database exists.\n" +
-                    "  3. The password in DatabaseConnection.cs is correct.",
-                    "Database Connection Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-
-            txtUsername.Focus();
+          
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-  
+                
         }
          
         
