@@ -1,4 +1,6 @@
-﻿namespace BillingSystem
+﻿using BillingSystem.Database;
+
+namespace BillingSystem
 {
     partial class LoginForm
     {
@@ -91,6 +93,7 @@
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // btnCancel
             // 
@@ -128,13 +131,28 @@
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-          
+            // Test the database connection when the form opens.
+            // This gives a clear warning if MySQL is not running.
+            if (!DatabaseConnection.TestConnection())
+            {
+                MessageBox.Show(
+                    "Cannot connect to the database.\n\n" +
+                    "Please make sure:\n" +
+                    "  1. MySQL Server is running.\n" +
+                    "  2. BillingDB database exists.\n" +
+                    "  3. The password in DatabaseConnection.cs is correct.",
+                    "Database Connection Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+            txtUsername.Focus();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-                
+  
         }
          
         
