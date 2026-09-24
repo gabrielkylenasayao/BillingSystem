@@ -154,6 +154,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(148, 27);
             txtSearch.TabIndex = 5;
+            txtSearch.KeyPress += txtSearch_KeyPress;
             // 
             // btnSearch
             // 
@@ -163,6 +164,7 @@
             btnSearch.TabIndex = 6;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // CustomerListForm
             // 
