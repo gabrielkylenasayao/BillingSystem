@@ -70,7 +70,9 @@
             dgvCustomers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCustomers.Size = new Size(744, 277);
             dgvCustomers.TabIndex = 1;
-            dgvCustomers.CellContentClick += ssssssssssssssssssss_CellContentClick;
+            dgvCustomers.CellContentClick += dgvCustomers_CellDoubleClick;
+            dgvCustomers.CellDoubleClick += dgvCustomers_CellDoubleClick;
+            dgvCustomers.SelectionChanged += dgvCustomers_SelectionChanged;
             // 
             // CustomerID
             // 
@@ -189,7 +191,28 @@
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // Step 1: Make sure a customer is selected
+            if (_selectedCustomerId == 0)
+            {
+                MessageBox.Show("Please select a customer to delete.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Step 2: Confirm before deleting — this cannot be undone
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to delete this customer?\n" +
+                "All billing records for this customer will also be deleted.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            // Step 3: Only delete if the user clicked Yes
+            if (confirm == DialogResult.Yes)
+            {
+                DeleteCustomer(_selectedCustomerId);
+            }
+            // If the user clicked No, do nothing — the record is preserved
         }
 
         #endregion
