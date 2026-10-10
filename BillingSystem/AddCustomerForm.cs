@@ -50,7 +50,7 @@ namespace BillingSystem
 
         private void LoadCustomerData(int customerId)
         {
-            try 
+            try
             {
                 using (var conn = DatabaseConnection.GetConnection())
                 {
@@ -268,6 +268,10 @@ namespace BillingSystem
 
         }
 
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
