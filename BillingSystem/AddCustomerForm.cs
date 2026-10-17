@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BillingSystem.Database;
+using BillingSystem.Utils;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using BillingSystem.Database;
 
 namespace BillingSystem
 {
@@ -173,10 +174,14 @@ namespace BillingSystem
 
                         if (rowsAffected > 0)
                         {
+
+                            AuditLogger.Log("ADD_CUSTOMER", $"New customer '{txtFullName.Text.Trim()}' added by {AppSession.CurrentUsername}.");
+
                             MessageBox.Show("Customer saved successfully.",
                                 "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             ClearFields();
+
                         }
                     }
                 }
@@ -233,6 +238,8 @@ namespace BillingSystem
 
                         if (rowsAffected > 0)
                         {
+                            AuditLogger.Log("EDIT_CUSTOMER", $"Customer ID {_editCustomerId} updated by {AppSession.CurrentUsername}.");
+
                             MessageBox.Show("Customer updated successfully.",
                                 "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -271,6 +278,11 @@ namespace BillingSystem
         private void lblTitle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
