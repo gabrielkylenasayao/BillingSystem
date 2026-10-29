@@ -1,4 +1,8 @@
-﻿namespace BillingSystem.Utils
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BillingSystem.Utils
 {
     /// <summary>
     /// Stores information about the currently logged-in user.
@@ -24,4 +28,7 @@
         }
     }
 }
+
+
+
 

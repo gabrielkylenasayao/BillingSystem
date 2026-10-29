@@ -57,6 +57,8 @@ namespace BillingSystem
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
                             dgvAuditLogs.DataSource = dt;
+                            lblTitle.Text =
+                                $"Audit Log Report  ({dt.Rows.Count} record(s))";
                         }
                     }
                 }
@@ -87,4 +89,5 @@ namespace BillingSystem
 
     }
 }
+
 

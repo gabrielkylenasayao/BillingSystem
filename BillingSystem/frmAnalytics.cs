@@ -31,7 +31,15 @@ namespace BillingSystem
             LoadTop5Customers();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void dgvTop5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
         private void LoadKpiSummary()
         {
             try

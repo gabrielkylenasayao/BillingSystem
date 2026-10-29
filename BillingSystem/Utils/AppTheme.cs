@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
 
 namespace BillingSystem.Utils
 {
@@ -40,4 +43,5 @@ namespace BillingSystem.Utils
         public static Color InactiveRowColor = Color.FromArgb(255, 199, 206);
     }
 }
+
 

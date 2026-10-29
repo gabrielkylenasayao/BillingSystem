@@ -13,7 +13,13 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
+        private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
+        {
+            // If no row is selected (e.g., grid is empty), do nothing
+            if (dgvCustomers.CurrentRow == null) return;
 
+            // Read the CustomerID value from the selected row
+            var idCell = dgvCustomers.CurrentRow.Cells["CustomerID"].Value;
 
 
 
@@ -122,12 +128,34 @@ namespace BillingSystem
             InitStatusStrip();
         }
 
-        private void lblTitle_Click(object sender, EventArgs e)
+        private void dgvCustomers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            // Skip the header row
+            if (e.RowIndex < 0) return;
 
+
+            // Read Status from the data behind this row (the DataTable from LoadCustomers)
+            var rowData = dgvCustomers.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            string status = rowData?["Status"]?.ToString() ?? "";
+
+
+            if (status == "Inactive")
+            {
+                // The whole row turns light red
+                e.CellStyle.BackColor = AppTheme.InactiveRowColor;
+            }
+            else if (status == "Active" &&
+                     dgvCustomers.Columns[e.ColumnIndex].DataPropertyName == "Status")
+            {
+                // Only the Status cell turns light green, so the
+                // alternating row colors stay visible
+                e.CellStyle.BackColor = AppTheme.ActiveRowColor;
+            }
         }
 
-        private void ssssssssssssssssssss_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void lblTitle_Click(object sender, EventArgs e)
         {
 
         }

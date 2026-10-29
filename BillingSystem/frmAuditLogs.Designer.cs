@@ -35,12 +35,15 @@
             btnClose = new Button();
             dtpFrom = new DateTimePicker();
             dtpTo = new DateTimePicker();
+            btnSearch = new Button();
             dgvAuditLogs = new DataGridView();
+            btnClose = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAuditLogs).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
             // 
+            lblTitle.AccessibleRole = AccessibleRole.Window;
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.Location = new Point(12, 9);
@@ -115,7 +118,9 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 503);
+            Controls.Add(btnClose);
             Controls.Add(dgvAuditLogs);
+            Controls.Add(btnSearch);
             Controls.Add(dtpTo);
             Controls.Add(dtpFrom);
             Controls.Add(btnClose);
@@ -126,6 +131,8 @@
             Name = "frmAuditLogs";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Audit Log Report";
+            Load += frmAuditLogs_Load;
+            Click += btnSearch_Click;
             ((System.ComponentModel.ISupportInitialize)dgvAuditLogs).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -140,6 +147,8 @@
         private Button btnClose;
         private DateTimePicker dtpFrom;
         private DateTimePicker dtpTo;
+        private Button btnSearch;
         private DataGridView dgvAuditLogs;
+        private Button btnClose;
     }
 }

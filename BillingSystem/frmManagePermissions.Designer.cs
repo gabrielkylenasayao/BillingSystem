@@ -32,6 +32,7 @@
             lblRole = new Label();
             cmbRole = new ComboBox();
             chkAddCustomer = new CheckBox();
+            chkAnalytics = new CheckBox();
             chkEditCustomer = new CheckBox();
             chkDeleteCustomer = new CheckBox();
             chkAnalytics = new CheckBox();
@@ -81,6 +82,16 @@
             chkAddCustomer.TabIndex = 3;
             chkAddCustomer.Text = "Add Customer";
             chkAddCustomer.UseVisualStyleBackColor = true;
+            // 
+            // chkAnalytics
+            // 
+            chkAnalytics.AutoSize = true;
+            chkAnalytics.Location = new Point(140, 214);
+            chkAnalytics.Name = "chkAnalytics";
+            chkAnalytics.Size = new Size(90, 24);
+            chkAnalytics.TabIndex = 4;
+            chkAnalytics.Text = "Analytics";
+            chkAnalytics.UseVisualStyleBackColor = true;
             // 
             // chkEditCustomer
             // 
@@ -175,6 +186,7 @@
             Controls.Add(chkAnalytics);
             Controls.Add(chkDeleteCustomer);
             Controls.Add(chkEditCustomer);
+            Controls.Add(chkAnalytics);
             Controls.Add(chkAddCustomer);
             Controls.Add(cmbRole);
             Controls.Add(lblRole);
@@ -194,6 +206,7 @@
         private Label lblRole;
         private ComboBox cmbRole;
         private CheckBox chkAddCustomer;
+        private CheckBox chkAnalytics;
         private CheckBox chkEditCustomer;
         private CheckBox chkDeleteCustomer;
         private CheckBox chkAnalytics;

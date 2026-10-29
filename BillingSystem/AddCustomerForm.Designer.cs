@@ -53,6 +53,7 @@
             lblTitle.Size = new Size(195, 28);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Add New Customer";
+            lblTitle.Click += lblTitle_Click;
             // 
             // lblFullName
             // 
@@ -164,6 +165,7 @@
             btnBack.TabIndex = 13;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // AddCustomerForm
             // 

@@ -30,6 +30,7 @@
         {
             lblTitle = new Label();
             lblTotalCustomers = new Label();
+            lblTotalUnpaid = new Label();
             lblTotalRevenue = new Label();
             lblTotalUnpaid = new Label();
             plotMonthlyRevenue = new ScottPlot.WinForms.FormsPlot();
@@ -40,6 +41,7 @@
             FullName = new DataGridViewTextBoxColumn();
             TotalConsumption = new DataGridViewTextBoxColumn();
             TotalBilled = new DataGridViewTextBoxColumn();
+            btnCloseAnalytics = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTop5).BeginInit();
             SuspendLayout();
             // 
@@ -62,6 +64,15 @@
             lblTotalCustomers.Size = new Size(130, 20);
             lblTotalCustomers.TabIndex = 1;
             lblTotalCustomers.Text = "Total Customers: 0";
+            // 
+            // lblTotalUnpaid
+            // 
+            lblTotalUnpaid.AutoSize = true;
+            lblTotalUnpaid.Location = new Point(679, 68);
+            lblTotalUnpaid.Name = "lblTotalUnpaid";
+            lblTotalUnpaid.Size = new Size(137, 20);
+            lblTotalUnpaid.TabIndex = 2;
+            lblTotalUnpaid.Text = "Total Unpaid: ₱0.00";
             // 
             // lblTotalRevenue
             // 
@@ -114,6 +125,7 @@
             dgvTop5.Columns.AddRange(new DataGridViewColumn[] { FullName, TotalConsumption, TotalBilled });
             dgvTop5.Location = new Point(268, 391);
             dgvTop5.Name = "dgvTop5";
+            dgvTop5.RowHeadersVisible = false;
             dgvTop5.RowHeadersWidth = 51;
             dgvTop5.Size = new Size(429, 145);
             dgvTop5.TabIndex = 7;
@@ -150,6 +162,16 @@
             TotalBilled.MinimumWidth = 6;
             TotalBilled.Name = "TotalBilled";
             // 
+            // btnCloseAnalytics
+            // 
+            btnCloseAnalytics.Location = new Point(853, 552);
+            btnCloseAnalytics.Name = "btnCloseAnalytics";
+            btnCloseAnalytics.Size = new Size(94, 29);
+            btnCloseAnalytics.TabIndex = 8;
+            btnCloseAnalytics.Text = "Close";
+            btnCloseAnalytics.UseVisualStyleBackColor = true;
+            btnCloseAnalytics.Click += btnCloseAnalytics_Click;
+            // 
             // frmAnalytics
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -162,6 +184,7 @@
             Controls.Add(plotMonthlyRevenue);
             Controls.Add(lblTotalUnpaid);
             Controls.Add(lblTotalRevenue);
+            Controls.Add(lblTotalUnpaid);
             Controls.Add(lblTotalCustomers);
             Controls.Add(lblTitle);
             Name = "frmAnalytics";
@@ -180,6 +203,7 @@
         private Label lblTotalCustomers;
         private Label lblTotalRevenue;
         private Label lblTotalUnpaid;
+        private Label lblTotalRevenue;
         private ScottPlot.WinForms.FormsPlot plotMonthlyRevenue;
         private ScottPlot.WinForms.FormsPlot plotPaidUnpaid;
         private Label lblTop5Title;
