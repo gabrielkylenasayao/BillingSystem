@@ -147,8 +147,6 @@
         private Button btnClose;
         private DateTimePicker dtpFrom;
         private DateTimePicker dtpTo;
-        private Button btnSearch;
         private DataGridView dgvAuditLogs;
-        private Button btnClose;
     }
 }

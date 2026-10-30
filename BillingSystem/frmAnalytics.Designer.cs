@@ -203,7 +203,6 @@
         private Label lblTotalCustomers;
         private Label lblTotalRevenue;
         private Label lblTotalUnpaid;
-        private Label lblTotalRevenue;
         private ScottPlot.WinForms.FormsPlot plotMonthlyRevenue;
         private ScottPlot.WinForms.FormsPlot plotPaidUnpaid;
         private Label lblTop5Title;

@@ -42,7 +42,6 @@ namespace BillingSystem
         private void lblAddress_Click(object sender, EventArgs e)
         {
             InitializeComponent();
-            _editCustomerId = customerId;
         }
 
         private void AddCustomerForm_Load(object sender, EventArgs e)
@@ -62,22 +61,6 @@ namespace BillingSystem
             }
         }
 
-        private void AddCustomerForm_Load(object sender, EventArgs e)
-        {
-            if (_editCustomerId > 0)
-            {
-                // EDIT MODE — change the title and load existing data
-                lblTitle.Text = "Edit Customer";
-                this.Text = "Billing System - Edit Customer";
-                LoadCustomerData(_editCustomerId);
-            }
-            else
-            {
-                // ADD MODE — set default values
-                lblTitle.Text = "Add New Customer";
-                txtBalance.Text = "0.00";
-            }
-        }
 
         private void LoadCustomerData(int customerId)
         {

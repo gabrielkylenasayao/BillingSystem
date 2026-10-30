@@ -209,7 +209,6 @@
         private CheckBox chkAnalytics;
         private CheckBox chkEditCustomer;
         private CheckBox chkDeleteCustomer;
-        private CheckBox chkAnalytics;
         private CheckBox chkExportExcel;
         private CheckBox chkExportPdf;
         private CheckBox chkAuditLogs;

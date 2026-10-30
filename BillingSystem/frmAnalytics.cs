@@ -236,11 +236,6 @@ namespace BillingSystem
 
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void plotMonthlyRevenue_Load(object sender, EventArgs e)
         {
 

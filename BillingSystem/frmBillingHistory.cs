@@ -39,7 +39,6 @@ namespace BillingSystem
                 try
                 {
                     conn.Open();
-                    // Explicitly selects and aliases only the spec-required columns, hiding BillingID and CustomerID
                     string query = @"SELECT 
                              BillingMonth AS 'Billing Month', 
                              PreviousReading AS 'Previous Reading', 
@@ -60,6 +59,14 @@ namespace BillingSystem
                         {
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
+
+                            if (dt.Rows.Count == 0)
+                            {
+                                MessageBox.Show("No billing records were found for that customer.",
+                                                "Billing History",
+                                                MessageBoxButtons.OK,
+                                                MessageBoxIcon.Information);
+                            }
 
                             dgvBillingHistory.DataSource = dt;
                         }

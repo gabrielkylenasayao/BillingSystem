@@ -13,30 +13,20 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-        private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
-        {
-            // If no row is selected (e.g., grid is empty), do nothing
-            if (dgvCustomers.CurrentRow == null) return;
-
-            // Read the CustomerID value from the selected row
-            var idCell = dgvCustomers.CurrentRow.Cells["CustomerID"].Value;
-
-
-
-
 namespace BillingSystem
 {
     public partial class CustomerListForm : Form
     {
+        // Stores the CustomerID of the currently selected row.
+        // 0 means no customer is currently selected.
+        private int _selectedCustomerId = 0;
+        private bool _canEdit = true;
+
         public CustomerListForm()
         {
             InitializeComponent();
             ConfigureDataGridView();
         }
-        // Stores the CustomerID of the currently selected row.
-        // 0 means no customer is currently selected.
-        private int _selectedCustomerId = 0;
-        private bool _canEdit = true;
 
         private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
         {
@@ -91,8 +81,6 @@ namespace BillingSystem
                         {
                             AuditLogger.Log("DELETE_CUSTOMER", $"Customer ID {customerId} deleted by {AppSession.CurrentUsername}.");
 
-
-
                             MessageBox.Show("Customer deleted successfully.",
                                 "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -114,9 +102,6 @@ namespace BillingSystem
             }
         }
 
-
-
-
         private void CustomerListForm_Load(object sender, EventArgs e)
         {
             ApplyTheme();
@@ -133,11 +118,9 @@ namespace BillingSystem
             // Skip the header row
             if (e.RowIndex < 0) return;
 
-
             // Read Status from the data behind this row (the DataTable from LoadCustomers)
             var rowData = dgvCustomers.Rows[e.RowIndex].DataBoundItem as DataRowView;
             string status = rowData?["Status"]?.ToString() ?? "";
-
 
             if (status == "Inactive")
             {
@@ -153,11 +136,8 @@ namespace BillingSystem
             }
         }
 
-
-
         private void lblTitle_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -167,12 +147,14 @@ namespace BillingSystem
 
             this.Close();
         }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddCustomerForm addCustomerForm = new AddCustomerForm();
             addCustomerForm.ShowDialog();
             LoadCustomers();  // enable this line in Step 4.4
         }
+
         private void LoadCustomers()
         {
             try
@@ -183,14 +165,14 @@ namespace BillingSystem
 
                     // SELECT all customers, most recently added first
                     string sql = @"SELECT CustomerID,
-                                  FullName,
-                                  Address,
-                                  ContactNumber,
-                                  Email,
-                                  Balance,
-                                  Status
-                           FROM   Customers
-                           ORDER  BY FullName ASC;";
+                                         FullName,
+                                         Address,
+                                         ContactNumber,
+                                         Email,
+                                         Balance,
+                                         Status
+                                  FROM   Customers
+                                  ORDER  BY FullName ASC;";
 
                     using (var adapter = new MySqlDataAdapter(sql, conn))
                     {
@@ -230,17 +212,17 @@ namespace BillingSystem
 
                     // Parameterized SELECT with WHERE ... LIKE
                     string sql = @"SELECT CustomerID,
-                                  FullName,
-                                  Address,
-                                  ContactNumber,
-                                  Email,
-                                  Balance,
-                                  Status
-                           FROM   Customers
-                           WHERE  FullName      LIKE @keyword
-                              OR  Address       LIKE @keyword
-                              OR  ContactNumber LIKE @keyword
-                           ORDER  BY FullName ASC;";
+                                         FullName,
+                                         Address,
+                                         ContactNumber,
+                                         Email,
+                                         Balance,
+                                         Status
+                                  FROM   Customers
+                                  WHERE  FullName      LIKE @keyword
+                                     OR  Address       LIKE @keyword
+                                     OR  ContactNumber LIKE @keyword
+                                  ORDER  BY FullName ASC;";
 
                     using (var cmd = new MySqlCommand(sql, conn))
                     {
@@ -264,6 +246,7 @@ namespace BillingSystem
                     "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim();
@@ -278,6 +261,7 @@ namespace BillingSystem
                 SearchCustomers(keyword);
             }
         }
+
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -285,6 +269,7 @@ namespace BillingSystem
                 btnSearch_Click(sender, e);
             }
         }
+
         private void ConfigureDataGridView()
         {
             dgvCustomers.AutoGenerateColumns = false;
@@ -308,7 +293,6 @@ namespace BillingSystem
         private void btnAnalytics_Click(object sender, EventArgs e)
         {
             AuditLogger.Log("VIEW_ANALYTICS", $"{AppSession.CurrentUsername} opened the Analytics Dashboard.");
-
 
             // Open the Analytics Dashboard as a dialog so the
             // Customer List stays open in the background
@@ -363,7 +347,6 @@ namespace BillingSystem
                         workbook.SaveAs(saveDialog.FileName);
                     }
                     AuditLogger.Log("EXPORT_EXCEL", $"{AppSession.CurrentUsername} exported customer list to Excel.");
-
 
                     MessageBox.Show("Customer list exported successfully to Excel.",
                         "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -463,7 +446,6 @@ namespace BillingSystem
                     }
                     AuditLogger.Log("EXPORT_PDF", $"{AppSession.CurrentUsername} exported customer list to PDF.");
 
-
                     MessageBox.Show("Customer list exported successfully to PDF.",
                         "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -514,8 +496,6 @@ namespace BillingSystem
                                     case "AddCustomer":
                                         btnAdd.Enabled = isAllowed; break;
                                     case "EditCustomer":
-                                        // Edit is triggered by double-click — remember the
-                                        // permission so CellDoubleClick can check it
                                         _canEdit = isAllowed;
                                         break;
                                     case "DeleteCustomer":
@@ -543,7 +523,6 @@ namespace BillingSystem
             }
         }
 
-        // Call this inside CustomerListForm_Load after ApplyPermissions()
         private void InitStatusStrip()
         {
             lblStatusUser.Text =
@@ -563,10 +542,8 @@ namespace BillingSystem
 
         private void ApplyTheme()
         {
-            // Form background
             this.BackColor = AppTheme.BackgroundColor;
 
-            // Action buttons
             btnAdd.BackColor = AppTheme.SuccessColor;
             btnAdd.ForeColor = Color.White;
             btnDelete.BackColor = AppTheme.DangerColor;
@@ -582,39 +559,12 @@ namespace BillingSystem
             btnManagePermissions.BackColor = AppTheme.DangerColor;
             btnManagePermissions.ForeColor = Color.White;
 
-            // DataGridView header colors
             dgvCustomers.ColumnHeadersDefaultCellStyle.BackColor = AppTheme.PrimaryColor;
             dgvCustomers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvCustomers.ColumnHeadersDefaultCellStyle.Font =
                 new Font("Segoe UI", 9f, FontStyle.Bold);
 
-            // Alternating row colors
             dgvCustomers.AlternatingRowsDefaultCellStyle.BackColor = AppTheme.GridRowAlt;
-        }
-
-        private void dgvCustomers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            // Skip the header row
-            if (e.RowIndex < 0) return;
-
-
-            // Read Status from the data behind this row (the DataTable from LoadCustomers)
-            var rowData = dgvCustomers.Rows[e.RowIndex].DataBoundItem as DataRowView;
-            string status = rowData?["Status"]?.ToString() ?? "";
-
-
-            if (status == "Inactive")
-            {
-                // The whole row turns light red
-                e.CellStyle.BackColor = AppTheme.InactiveRowColor;
-            }
-            else if (status == "Active" &&
-                     dgvCustomers.Columns[e.ColumnIndex].DataPropertyName == "Status")
-            {
-                // Only the Status cell turns light green, so the
-                // alternating row colors stay visible
-                e.CellStyle.BackColor = AppTheme.ActiveRowColor;
-            }
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
