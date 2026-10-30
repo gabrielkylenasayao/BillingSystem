@@ -126,6 +126,5 @@ namespace BillingSystem
             this.Close();
         }
 
-
     }
 }

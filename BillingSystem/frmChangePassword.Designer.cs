@@ -52,66 +52,66 @@
             // lblCurrent
             // 
             lblCurrent.AutoSize = true;
-            lblCurrent.Font = new Font("Segoe UI", 16.2F);
-            lblCurrent.Location = new Point(71, 130);
+            lblCurrent.Font = new Font("Segoe UI", 12F);
+            lblCurrent.Location = new Point(84, 134);
             lblCurrent.Name = "lblCurrent";
-            lblCurrent.Size = new Size(247, 38);
+            lblCurrent.Size = new Size(172, 28);
             lblCurrent.TabIndex = 1;
             lblCurrent.Text = "Current Password :";
             // 
             // lblNew
             // 
             lblNew.AutoSize = true;
-            lblNew.Font = new Font("Segoe UI", 16.2F);
-            lblNew.Location = new Point(71, 190);
+            lblNew.Font = new Font("Segoe UI", 12F);
+            lblNew.Location = new Point(84, 194);
             lblNew.Name = "lblNew";
-            lblNew.Size = new Size(210, 38);
+            lblNew.Size = new Size(146, 28);
             lblNew.TabIndex = 2;
             lblNew.Text = "New Password :";
             // 
             // lblRetype
             // 
             lblRetype.AutoSize = true;
-            lblRetype.Font = new Font("Segoe UI", 16.2F);
-            lblRetype.Location = new Point(71, 248);
+            lblRetype.Font = new Font("Segoe UI", 12F);
+            lblRetype.Location = new Point(84, 252);
             lblRetype.Name = "lblRetype";
-            lblRetype.Size = new Size(239, 38);
+            lblRetype.Size = new Size(167, 28);
             lblRetype.TabIndex = 3;
             lblRetype.Text = "Retype Password :";
             // 
             // txtCurrentPassword
             // 
-            txtCurrentPassword.Font = new Font("Segoe UI", 16.2F);
-            txtCurrentPassword.Location = new Point(373, 130);
+            txtCurrentPassword.Font = new Font("Segoe UI", 12F);
+            txtCurrentPassword.Location = new Point(386, 134);
             txtCurrentPassword.Name = "txtCurrentPassword";
-            txtCurrentPassword.Size = new Size(310, 43);
+            txtCurrentPassword.Size = new Size(310, 34);
             txtCurrentPassword.TabIndex = 4;
             txtCurrentPassword.UseSystemPasswordChar = true;
             // 
             // txtNewPassword
             // 
-            txtNewPassword.Font = new Font("Segoe UI", 16.2F);
-            txtNewPassword.Location = new Point(373, 190);
+            txtNewPassword.Font = new Font("Segoe UI", 12F);
+            txtNewPassword.Location = new Point(386, 194);
             txtNewPassword.Name = "txtNewPassword";
-            txtNewPassword.Size = new Size(310, 43);
+            txtNewPassword.Size = new Size(310, 34);
             txtNewPassword.TabIndex = 5;
             txtNewPassword.UseSystemPasswordChar = true;
             // 
             // txtRetypePassword
             // 
-            txtRetypePassword.Font = new Font("Segoe UI", 16.2F);
-            txtRetypePassword.Location = new Point(373, 248);
+            txtRetypePassword.Font = new Font("Segoe UI", 12F);
+            txtRetypePassword.Location = new Point(386, 252);
             txtRetypePassword.Name = "txtRetypePassword";
-            txtRetypePassword.Size = new Size(310, 43);
+            txtRetypePassword.Size = new Size(310, 34);
             txtRetypePassword.TabIndex = 6;
             txtRetypePassword.UseSystemPasswordChar = true;
             // 
             // btnSave
             // 
-            btnSave.Font = new Font("Segoe UI", 16.2F);
-            btnSave.Location = new Point(105, 349);
+            btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSave.Location = new Point(84, 349);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(213, 42);
+            btnSave.Size = new Size(151, 42);
             btnSave.TabIndex = 7;
             btnSave.Text = "Save Password";
             btnSave.UseVisualStyleBackColor = true;
@@ -119,13 +119,14 @@
             // 
             // btnCancel
             // 
-            btnCancel.Font = new Font("Segoe UI", 16.2F);
-            btnCancel.Location = new Point(423, 349);
+            btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCancel.Location = new Point(574, 349);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(213, 42);
+            btnCancel.Size = new Size(122, 42);
             btnCancel.TabIndex = 8;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // frmChangePassword
             // 
